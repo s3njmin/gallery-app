@@ -1,0 +1,42 @@
+.App {
+    display: grid;
+    grid-template-columns: repeat(8, 12.5%);
+    grid-auto-rows: minmax(30px, auto);
+}
+
+.header {
+    position: absolute;
+    top: 16px;
+    left: 50px;
+}
+
+.icon:hover {
+    color: #707070 !important;
+}
+
+/* .gallery {
+    border: 1px solid rgb(143, 142, 142);
+    grid-column: 2 / 8;
+    grid-row-start: 5;
+    height: 100vh;
+} */
+
+img {
+    height: 250px;
+    width: 20vw;
+    object-fit: cover;
+}
+
+.layout {
+    display: grid;
+    
+    grid-column: 2 / 8;
+    grid-row-start: 5;
+    height: 100vh;
+
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-auto-rows: 11px;
+}
+
+.standard-image {
+}

@@ -1,0 +1,44 @@
+.nav {
+  font-family: "aktiv-grotesk-extended","Helvetica Neue","Arial Narrow",sans-serif;
+  font-weight: 700;
+  font-size: .7rem;
+  letter-spacing: .05rem;
+  text-transform: uppercase;
+
+  line-height: 50px;
+  text-align: center;
+}
+
+/* applies to left and right nav */
+span {
+  position: absolute;
+  top: 50vh;
+  margin-top: -25px;
+
+  width: 100vh;
+  height: 50px;
+  padding: 0px 20px;
+}
+
+.left-nav {
+  left: 0px;
+  transform: rotate(270deg) translate(0px, -50vh);
+}
+
+.right-nav {
+  right: 0px;
+  transform: rotate(90deg) translate(0px, -50vh);
+}
+
+/* white, black buttons share the same css */
+.nav-white {
+  float: right;
+  width: 50vh;
+}
+
+.nav-black {
+  float: left;
+  width: 50vh;
+  background-color: black;
+  color: white;
+}
