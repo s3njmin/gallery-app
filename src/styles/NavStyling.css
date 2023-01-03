@@ -1,4 +1,4 @@
-.nav {
+button {
   font-family: "aktiv-grotesk-extended","Helvetica Neue","Arial Narrow",sans-serif;
   font-weight: 700;
   font-size: .7rem;
@@ -36,6 +36,8 @@ span {
 .nav-white {
   float: right;
   width: 50vh;
+  background-color: white;
+  border: none;
 }
 
 .nav-black {
@@ -43,4 +45,5 @@ span {
   width: 50vh;
   background-color: black;
   color: white;
+  border: none;
 }
