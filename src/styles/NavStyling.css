@@ -26,6 +26,8 @@ span {
 }
 
 .right-nav {
+  /* position: -webkit-sticky;
+  position: sticky; */
   right: 0px;
   transform: rotate(90deg) translate(0px, -50vh);
 }
