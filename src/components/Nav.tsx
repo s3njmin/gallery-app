@@ -22,7 +22,7 @@ export default function Nav(props: any) {
                     about
                 </button>
                 <div>
-                    <form className="nav-white" onSubmit={props.formSubmit}>
+                    <form className="nav-white" onSubmit={props.formSubmit()}>
                         <input className='file-input' type="file" onChange={(e)=> props.convertFile(e.target.files)} />
                         upload
                     </form>

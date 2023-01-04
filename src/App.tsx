@@ -3,9 +3,20 @@ import Nav from './components/Nav';
 import './styles/App.css';
 import { SiIconfinder } from 'react-icons/si';
 import Layout from './components/Layout';
-import Card from './components/Card';
-import FileObj from './models/FileObj';
-import UploadPopup from './components/UploadPopup';
+
+import eiffelTower from './resources/eiffelTower.jpg';
+import parisArc from './resources/parisArc.jpg';
+import coloseum from './resources/coloseum.jpg';
+import goldenGate from './resources/goldenGate.jpg';
+import taj from './resources/taj.jpg';
+
+let imageGallery = [
+  eiffelTower,
+  parisArc,
+  coloseum,
+  goldenGate,
+  taj
+];
 
 function App() {
 
@@ -33,23 +44,25 @@ function App() {
 
   
   // upload images
-  const [filebase64, setFileBase64] = useState<string>("")
+  const [filebase64, setFileBase64] = useState<string>("");
 
-  function formSubmit(e: any) {
-    e.preventDefault();
+  function formSubmit() {
+    // e.preventDefault();
     console.log({filebase64});
   }
 
   function convertFile(files: FileList | null) {
     if (files) {
-      const fileRef = files[0] || ""
-      const fileType: string= fileRef.type || ""
-      console.log("This file upload is of type:",fileType)
-      const reader = new FileReader()
-      reader.readAsBinaryString(fileRef)
-      reader.onload=(ev: any) => {
-        // convert it to base64
-        setFileBase64(`data:${fileType};base64,${btoa(ev.target.result)}`)
+      const fileRef = files[0] || "";
+      const fileType: string = fileRef.type || "";
+      console.log("This file upload is of type:", fileType);
+
+      const reader = new FileReader();
+      reader.readAsBinaryString(fileRef);
+
+      reader.onload = (ev: any) => {
+        // convert it to base64, push into image gallery
+        imageGallery.push(`data:${fileType};base64, ${btoa(ev.target.result)}`);
       }
     }
   }
@@ -62,9 +75,7 @@ function App() {
          <SiIconfinder className='icon' size='3em' color='#ebebeb'/>
        </div>
 
-      <img src={filebase64} />
-
-      <Layout/>
+      <Layout imageGallery={imageGallery}/>
     </div>
   );
 }
