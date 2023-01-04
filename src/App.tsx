@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import './styles/App.css';
 import { SiIconfinder } from 'react-icons/si';
 import Layout from './components/Layout';
+import GalleryImage from './models/GalleryImage';
 
 import eiffelTower from './resources/eiffelTower.jpg';
 import parisArc from './resources/parisArc.jpg';
@@ -10,15 +11,34 @@ import coloseum from './resources/coloseum.jpg';
 import goldenGate from './resources/goldenGate.jpg';
 import taj from './resources/taj.jpg';
 
-let imageGallery = [
-  eiffelTower,
-  parisArc,
-  coloseum,
-  goldenGate,
-  taj
-];
+// let imageGallery: GalleryImage[] = [
+//   { title: 'eiffelTower', source: eiffelTower },
+//   { title: 'parisArc', source: parisArc },
+//   { title: 'coloseum', source: coloseum },
+//   { title: 'goldenGate', source: goldenGate },
+//   { title: 'taj', source: taj },
+// ];
 
 function App() {
+  let [imageGallery, setImageGallery] = useState([
+    eiffelTower,
+    parisArc ,
+    coloseum ,
+    goldenGate ,
+    taj ,
+  
+    eiffelTower,
+    parisArc ,
+    coloseum ,
+    goldenGate ,
+    taj ,
+  
+    eiffelTower,
+    parisArc ,
+    coloseum ,
+    goldenGate ,
+    taj ,
+  ]);
 
   // make side nav bars disappear or appear on scroll
     const [navIsVisible, setNavIsVisible] = useState(true);
@@ -60,12 +80,29 @@ function App() {
       const reader = new FileReader();
       reader.readAsBinaryString(fileRef);
 
+      console.log(fileRef.name);
+
       reader.onload = (ev: any) => {
         // convert it to base64, push into image gallery
         imageGallery.push(`data:${fileType};base64, ${btoa(ev.target.result)}`);
+        // imageGallery.push({ name: "temp", source: fileRef. })
       }
     }
   }
+
+  function removeImg(idx: string) {
+    const index = imageGallery.indexOf(idx, 0);
+    console.log(index + " " + idx);
+    console.log(imageGallery.length);
+    if (index > -1) {
+      setImageGallery(imageGallery => imageGallery.filter((i) => i !== idx));
+    }
+    console.log(imageGallery.length);
+  }
+
+  useEffect(() => {
+    
+  }, [imageGallery])
 
   return (
     <div className='App'>
@@ -75,7 +112,7 @@ function App() {
          <SiIconfinder className='icon' size='3em' color='#ebebeb'/>
        </div>
 
-      <Layout imageGallery={imageGallery}/>
+      <Layout imageGallery={imageGallery} removeImg={removeImg}/>
     </div>
   );
 }

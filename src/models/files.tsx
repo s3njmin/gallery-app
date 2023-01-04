@@ -1,4 +1,4 @@
-import FileObj from './FileObj';
+import FileObj from './GalleryImage';
 
 export default interface files {
     target: {
