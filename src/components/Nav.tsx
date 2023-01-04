@@ -1,8 +1,11 @@
 import '../styles/NavStyling.css';
 import { useState } from 'react';
+import React from 'react';
+
 
 export default function Nav(props: any) {
-    
+    const hiddenFileInput = React.useRef(null);
+
     return (
         <div className="nav">
             <span className="left-nav">
@@ -18,9 +21,12 @@ export default function Nav(props: any) {
                 <button className="nav-black">
                     about
                 </button>
-                <button className="nav-white" onClick={props.openUpload}>
-                    upload
-                </button>
+                <div>
+                    <form className="nav-white" onSubmit={props.formSubmit}>
+                        <input className='file-input' type="file" onChange={(e)=> props.convertFile(e.target.files)} />
+                        upload
+                    </form>
+                </div>
             </span>
         </div>
     )

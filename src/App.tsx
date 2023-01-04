@@ -8,11 +8,6 @@ import FileObj from './models/FileObj';
 import UploadPopup from './components/UploadPopup';
 
 function App() {
-  const [uploadIsOpen, setUploadIsOpen] = useState(false);
-
-  function openUpload() {
-      setUploadIsOpen(true);
-  }
 
   // make side nav bars disappear or appear on scroll
     const [navIsVisible, setNavIsVisible] = useState(true);
@@ -38,14 +33,14 @@ function App() {
 
   
   // upload images
-  const [filebase64,setFileBase64] = useState<string>("")
+  const [filebase64, setFileBase64] = useState<string>("")
 
   function formSubmit(e: any) {
     e.preventDefault();
     console.log({filebase64});
   }
 
-  function convertFile(files: FileList|null) {
+  function convertFile(files: FileList | null) {
     if (files) {
       const fileRef = files[0] || ""
       const fileType: string= fileRef.type || ""
@@ -59,18 +54,15 @@ function App() {
     }
   }
 
-
   return (
     <div className='App'>
-       {navIsVisible && <Nav openUpload={openUpload} />}
-  
+       {navIsVisible && <Nav formSubmit={formSubmit} convertFile={convertFile}/>}
+
        <div className='header'>
          <SiIconfinder className='icon' size='3em' color='#ebebeb'/>
        </div>
 
-      {uploadIsOpen && 
-        <UploadPopup formSubmit={formSubmit} convertFile={convertFile} />
-      }
+      <img src={filebase64} />
 
       <Layout/>
     </div>
